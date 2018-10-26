@@ -47,8 +47,8 @@ func run() {
 
 	mat := pixel.IM
 	mat = mat.Moved(win.Bounds().Center())
-	mat = mat.Rotated(win.Bounds().Center(), math.Pi/4)
 	mat = mat.ScaledXY(win.Bounds().Center(), pixel.V(0.5, 2))
+	mat = mat.Rotated(win.Bounds().Center(), math.Pi/4)
 	sprite.Draw(win, mat)
 
 	// * Mojave fix
