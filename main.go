@@ -3,7 +3,6 @@ package main
 import (
 	"image"
 	_ "image/png"
-	"math"
 	"os"
 
 	"github.com/faiface/pixel"
@@ -41,20 +40,23 @@ func run() {
 		panic(err)
 	}
 
+	// * Mojave fix
+	win.SetPos(win.GetPos().Add(pixel.V(0, 1)))
+
 	sprite := pixel.NewSprite(pic, pic.Bounds())
 
 	win.Clear(colornames.Firebrick)
 
-	mat := pixel.IM
-	mat = mat.Moved(win.Bounds().Center())
-	mat = mat.ScaledXY(win.Bounds().Center(), pixel.V(0.5, 2))
-	mat = mat.Rotated(win.Bounds().Center(), math.Pi/4)
-	sprite.Draw(win, mat)
-
-	// * Mojave fix
-	win.SetPos(win.GetPos().Add(pixel.V(0, 1)))
+	angle := 0.5
 
 	for !win.Closed() {
+		angle += 0.05
+
+		mat := pixel.IM
+		mat = mat.Rotated(pixel.ZV, angle)
+		mat = mat.Moved(win.Bounds().Center())
+		sprite.Draw(win, mat)
+
 		win.Update()
 	}
 }
