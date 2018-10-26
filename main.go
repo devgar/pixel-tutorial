@@ -43,7 +43,7 @@ func run() {
 
 	sprite := pixel.NewSprite(pic, pic.Bounds())
 
-	win.Clear(colornames.Greenyellow)
+	win.Clear(colornames.Firebrick)
 
 	mat := pixel.IM
 	mat = mat.Moved(win.Bounds().Center())
