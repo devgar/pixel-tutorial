@@ -34,6 +34,7 @@ func run() {
 	if err != nil {
 		panic(err)
 	}
+	win.SetSmooth(true)
 
 	pic, err := loadPicture("hiking.png")
 	if err != nil {
