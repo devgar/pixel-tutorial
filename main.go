@@ -45,12 +45,12 @@ func run() {
 
 	sprite := pixel.NewSprite(pic, pic.Bounds())
 
-	win.Clear(colornames.Firebrick)
-
 	angle := 0.5
 
 	for !win.Closed() {
 		angle += 0.05
+
+		win.Clear(colornames.Firebrick)
 
 		mat := pixel.IM
 		mat = mat.Rotated(pixel.ZV, angle)
